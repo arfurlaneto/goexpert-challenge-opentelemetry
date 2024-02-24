@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  service-a:
+    build: ./service-a
+    restart: always
+    ports:
+      - "8080:8080"
+
+  service-b:
+    build: ./service-b
+    restart: always
+
+  collector:
+    image: otel/opentelemetry-collector:latest
+    restart: always
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./.docker/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+
+  zipkin-all-in-one:
+    image: openzipkin/zipkin:latest
+    restart: always
+    ports:
+      - "9411:9411"
