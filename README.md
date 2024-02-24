@@ -20,4 +20,6 @@ And do a request, something like this:
 curl --request POST --url 'http://localhost:8080' -H "Content-Type: application/json" -d '{"cep" : "69400970"}'
 ```
 
-You can open Zipkin UI at `http://localhost:9411/` to check out application tracing.
+You can open Zipkin UI at `http://localhost:9411/` to check out application tracing:
+
+![image](https://github.com/arfurlaneto/goexpert-challenge-opentelemetry/assets/3330854/856ed6c1-c4ac-461b-b03b-29b7f8740b7d)
