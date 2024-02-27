@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -51,10 +50,6 @@ func (s *ServiceBServiceImpl) QueryCep(ctx context.Context, cep string) (*Servic
 		return nil, err
 	}
 	defer response.Body.Close()
-
-	if response.StatusCode != 200 {
-		return nil, errors.New("Service B error")
-	}
 
 	return &ServiceBResponse{
 		StatusCode: response.StatusCode,

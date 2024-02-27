@@ -13,7 +13,7 @@ import (
 )
 
 type ViaCepResponse struct {
-	Erro        bool   `json:"erro"`
+	Erro        string `json:"erro"`
 	Cep         string `json:"cep"`
 	Logradouro  string `json:"logradouro"`
 	Complemento string `json:"complemento"`
@@ -75,7 +75,7 @@ func (s *ViaCepServiceImpl) QueryCep(ctx context.Context, cep string) (*ViaCepRe
 		return nil, errors.New("invalid ViaCEP API response")
 	}
 
-	if viaCepResponse.Erro {
+	if viaCepResponse.Erro == "true" {
 		return nil, errors.New("can not found zipcode")
 	}
 
